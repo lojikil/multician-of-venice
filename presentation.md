@@ -64,6 +64,12 @@ WARNING: Noo Yawk
 
 ---
 
+# why
+
+`<lojirant>`
+
+---
+
 # take aways
 
 <!--
@@ -74,7 +80,7 @@ as per always...
 
 1. we have been studying how to compose software since at least 1951
 2. many techniques are still applicable today
-3. lesser-known areas of software engineering/computer science
+3. 4 lesser-known areas of software engineering/computer science
 
 ---
 
@@ -357,9 +363,129 @@ these problems
 
 # Liskov
 
+- Barbara Liskov
+- did **not** program the UNIVAC
+    - one of the first women to earn a PhD in CS in the US (1968) 
+- worked on CLU (early OO language), AI, OSs, and...
+- **Liskov substitution principle**
+
+---
+
+# Liskov
+
+![her 1994 paper on LSP](images/lsp.png)
+
+- tied it to Hoare Logic via behavior
+- similar construction to Betrand Meyer's (another notable) Design By Contract 
+- really, a type of behavioral subtyping
+
+---
+
+# Liskov
+
+<!--
+
+so what do we get from this?
+
+-->
+
+
+- a more modern, type-level approach to Hoare Logic
+    - not quite Hoare TT, but...
+- allows approach to codifying correctness at the OO level
+- Super type actions ( `f :> Type t`)
+- Sub type actions (`g : Type s :> Type t`)
+
+---
+
+# Liskov
+
+```
+public class Bird {
+    // general birb things
+}
+public class FlyingBirds extends Bird {
+    public void fly(){}
+}
+public class Duck extends FlyingBirds{}
+public class Ostrich extends Bird{} 
+```
+_from: https://stackoverflow.com/a/44913313_
+
+---
+
+# Liskov
+
+- the general concept is simple
+- with many wins
+    1. codify correct access
+    2. codify correctness (mod deciability)
+    3. w minimal theoretical underpinnings 
+
 ---
 
 # Multicians
+
+<!--
+
+let's switch back to the olden
+days...
+
+-->
+
+- Multiplexed Information and Computing Service (MULTICS), 1969
+    - Unix (originally UNICS) was a simplification
+
+![multics](images/multics.png)
+
+---
+
+# Multicians 
+
+- started many security firsts:
+    - ring-based security (hardware supported)
+    - high-level language for kernel (PL/I)
+    - ACLs
+    - security engineering
+    - secure password storage
+    - early "tiger team" attacks (MULTICS SECURITY EVALUATION: VULNERABILITY ANALYSIS, 1974): https://csrc.nist.gov/csrc/media/publications/conference-paper/1998/10/08/proceedings-of-the-21st-nissc-1998/documents/early-cs-papers/karg74.pdf 
+
+---
+
+# Multicians
+
+- :hot_pepper:: Loji's 10th rule of cloud computing: every cloud computing system is an ad hoc, informally-specified, bug-ridden, slow implementation of half of Multics
+- think about it:
+    - utility computing for servers
+    - secure definitions
+    - high-level languages
+    - security evaluations by cool people
+    - :hot_pepper: it's  basically k8s
+
+---
+
+# Multicians
+
+- codified rich IPC mechanisms
+    - shared "segments"
+    - mailboxes
+    - _standard_ regardless of language (https://multicians.org/features.html#tag17)
+- strong security
+- built-in database (Multics Relational Data Store, MRDS)
+
+---
+
+# Multicians
+
+- struggle with today
+    - think of a secure definition of an OS **_AND_** environment <!-- ala ToB's k8s review -->
+- with things we often don't have
+    - MAC/RBAC
+    - instrumentation
+    - auditing
+    - ease of access
+
+_https://multicians.org/features.html_
 
 ---
 
@@ -374,3 +500,81 @@ these problems
 more and more understanding of program flows &c as we expected
 
 -->
+
+### ok, so... why?
+
+- _in the distance, loji rants_
+- _"the next 700 security tools"_ to come will have:
+    - wholistic environments <!-- manticore models of FS interaction -->
+    - minimal separation from user, language, data
+    - strong definitions, tooling <!-- wasm -->
+- _probably_ look like cyber reasoning/symbex/absint/fuzzing for program analysis
+
+---
+
+# the next 700
+
+### Hopper
+
+<!--
+
+-->
+- we need more precise abstractions
+- A-0 for current stacks
+- :hot_pepper: ask our selves hard  questions:
+    - do devs actually _need_ Turing Completeness
+    - what are common patterns we repeat over and over
+    - **why** do we repeat it over and over
+         - often in error prone ways
+    - actual design
+
+
+---
+
+# the next 700
+
+### Landin
+
+- we need simpler defintions, with direct  mappings
+    - physical ISWIM => logical => AE => SECD mapping
+    - analysis at each level
+- SECD, denotational semantics, &c
+    - LLVM, WASM help
+- tools that accelerate dev access to the same
+    <!-- we've been bad about surfacing this to devs -->
+
+---
+
+# the next 700
+
+### Liskov
+
+- more type theory pls
+- HOTT, Hoare Type Theory, refinement types, &c
+- provide devs with
+    - compilers
+    - debuggers
+    - tools
+- types <=> contracts
+
+---
+
+# the next 700
+
+### Multicians
+
+- we have great, holistic environments!
+    - k8s, GCP, AWS, &c.
+- rigorous definitions
+- actual security guarantees
+- tools for analyzing transitive issues
+    - generic Zelkova
+
+---
+
+# the next 700
+
+`</lojirant>`
+
+`<!-- questions? -->`
+
